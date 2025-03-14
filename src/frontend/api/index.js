@@ -1,10 +1,9 @@
 // Frontend API client for communicating with the backend
 
-// Import backend services directly for now
-// In a real app, these would be API calls to the backend server
-import * as productService from "../../backend/services/productService";
-import * as userService from "../../backend/services/userService";
-import * as orderService from "../../backend/services/orderService";
+// Import API functions
+import * as productApi from "../../api/products";
+import * as userApi from "../../api/users";
+import * as orderApi from "../../api/orders";
 
 // Product API
 export const productApi = {
@@ -16,24 +15,24 @@ export const productApi = {
    * @param {number} [params.maxPrice]
    * @param {string} [params.sortBy]
    */
-  getProducts: (params) => {
-    return productService.getProducts(params);
+  getProducts: async (params) => {
+    return await productApi.getProducts(params);
   },
 
   // Get product by ID
   /**
    * @param {string} id
    */
-  getProductById: (id) => {
-    return productService.getProductDetails(id);
+  getProductById: async (id) => {
+    return await productApi.getProductById(id);
   },
 
   // Create a new product (admin only)
   /**
    * @param {Object} productData
    */
-  createProduct: (productData) => {
-    return productService.createProduct(productData);
+  createProduct: async (productData) => {
+    return await productApi.createProduct(productData);
   },
 
   // Update a product (admin only)
@@ -41,16 +40,16 @@ export const productApi = {
    * @param {string} id
    * @param {Object} productData
    */
-  updateProduct: (id, productData) => {
-    return productService.updateProduct(id, productData);
+  updateProduct: async (id, productData) => {
+    return await productApi.updateProduct(id, productData);
   },
 
   // Delete a product (admin only)
   /**
    * @param {string} id
    */
-  deleteProduct: (id) => {
-    return productService.deleteProduct(id);
+  deleteProduct: async (id) => {
+    return await productApi.deleteProduct(id);
   },
 };
 
@@ -64,8 +63,8 @@ export const userApi = {
    * @param {string} userData.password
    * @param {string} [userData.avatar]
    */
-  register: (userData) => {
-    return userService.registerUser(userData);
+  register: async (userData) => {
+    return await userApi.registerUser(userData);
   },
 
   // User login
@@ -74,16 +73,16 @@ export const userApi = {
    * @param {string} credentials.email
    * @param {string} credentials.password
    */
-  login: (credentials) => {
-    return userService.loginUser(credentials);
+  login: async (credentials) => {
+    return await userApi.loginUser(credentials);
   },
 
   // Get user profile
   /**
    * @param {string} userId
    */
-  getProfile: (userId) => {
-    return userService.getUserProfile(userId);
+  getProfile: async (userId) => {
+    return await userApi.getUserProfile(userId);
   },
 
   // Update user profile
@@ -91,8 +90,8 @@ export const userApi = {
    * @param {string} userId
    * @param {Object} userData
    */
-  updateProfile: (userId, userData) => {
-    return userService.updateUserProfile(userId, userData);
+  updateProfile: async (userId, userData) => {
+    return await userApi.updateUserProfile(userId, userData);
   },
 };
 
@@ -106,24 +105,24 @@ export const orderApi = {
    * @param {Object} orderData.shippingAddress
    * @param {string} orderData.paymentMethod
    */
-  createOrder: (orderData) => {
-    return orderService.createOrder(orderData);
+  createOrder: async (orderData) => {
+    return await orderApi.createOrder(orderData);
   },
 
   // Get user orders
   /**
    * @param {string} userId
    */
-  getUserOrders: (userId) => {
-    return orderService.getUserOrders(userId);
+  getUserOrders: async (userId) => {
+    return await orderApi.getUserOrders(userId);
   },
 
   // Get order details
   /**
    * @param {string} orderId
    */
-  getOrderDetails: (orderId) => {
-    return orderService.getOrderDetails(orderId);
+  getOrderDetails: async (orderId) => {
+    return await orderApi.getOrderDetails(orderId);
   },
 
   // Update order status (admin only)
@@ -131,7 +130,7 @@ export const orderApi = {
    * @param {string} orderId
    * @param {string} status
    */
-  updateOrderStatus: (orderId, status) => {
-    return orderService.updateOrderStatus(orderId, status);
+  updateOrderStatus: async (orderId, status) => {
+    return await orderApi.updateOrderStatus(orderId, status);
   },
 };
