@@ -1,9 +1,11 @@
-# E-commerce App Installation Guide
+# E-commerce Mobile App Installation Guide
 
 ## Prerequisites
 
 - Node.js (v16 or higher)
 - npm (v8 or higher)
+- Expo CLI (`npm install -g expo-cli`)
+- Expo Go app on your mobile device (available on App Store or Google Play)
 
 ## Installation Steps
 
@@ -26,46 +28,45 @@
    - Create a `.env` file in the root directory
    - Add your Supabase credentials:
      ```
-     VITE_SUPABASE_URL=your_supabase_url
-     VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+     EXPO_PUBLIC_SUPABASE_URL=your_supabase_url
+     EXPO_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
      ```
 
-4. **Start the development server**
+4. **Start the Expo development server**
 
    ```bash
-   npm run dev
+   npm start
    ```
 
 5. **Access the application**
 
-   Open your browser and navigate to:
-   ```
-   http://localhost:5173
-   ```
+   - Scan the QR code with your mobile device using the Expo Go app
+   - Or press 'a' to open on an Android emulator
+   - Or press 'i' to open on an iOS simulator
+   - Or press 'w' to open in a web browser
 
 ## Build for Production
 
-To create a production build:
+To create a standalone app:
 
 ```bash
-npm run build
+eas build
 ```
 
-To preview the production build locally:
-
-```bash
-npm run preview
-```
+You'll need an Expo account and EAS CLI installed (`npm install -g eas-cli`).
 
 ## Project Structure
 
-- `/src/frontend` - Frontend React components and logic
-- `/src/backend` - Backend services, controllers, and models
-- `/src/components/ui` - UI components from Shadcn UI library
+- `/app` - Expo Router screens and navigation
+- `/assets` - Images, fonts, and other static assets
+- `/src/frontend` - Frontend React Native components and logic
+- `/src/backend` - Backend services, controllers, and models (mock implementation)
 
 ## Features
 
-- Product browsing with filtering and sorting
+- Product browsing with filtering and search
 - Shopping cart functionality
 - User authentication (mock implementation)
-- Responsive design for mobile and desktop
+- Camera and gallery integration for profile photos
+- Order tracking and history
+- Responsive design for various mobile devices
